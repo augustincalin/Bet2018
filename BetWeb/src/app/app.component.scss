@@ -1,0 +1,35 @@
+#mainNavigation {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 9;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.24);
+    height:100px;
+}
+.fill-remaining-space {
+    flex: 1 1 auto;
+}
+#mainContent {
+    margin-top: 100px;
+}
+
+#content{
+    padding:10px;
+}
+
+.sideNav {
+    padding: 10px;
+    background-color: rgba(0,0,0,0.03);
+    width: 300px;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.24);
+}
+
+.point{
+    font-size:1em;
+    color: #8c4cf0;
+}
+
+.match{
+    text-align:center;
+}

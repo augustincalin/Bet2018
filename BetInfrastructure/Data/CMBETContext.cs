@@ -12,13 +12,8 @@ namespace BetInfrastructure.Data
         public virtual DbSet<Team> Team { get; set; }
         public virtual DbSet<User> User { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public CMBETContext(DbContextOptions<CMBETContext> options) : base(options)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer(@"Server=172.31.43.64;Database=CMBET;User Id=sa;Password=saCB_esuper1;");
-            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

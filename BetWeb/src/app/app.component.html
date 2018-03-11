@@ -1,20 +1,67 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div fxLayout="column">
+    <mat-toolbar id="mainNavigation" color="primary">
+        <button mat-icon-button [matMenuTriggerFor]="appMenu" fxHide.gt-xs="true">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <mat-menu #appMenu="matMenu">
+            <button mat-menu-item>What is this?</button>
+            <button mat-menu-item>Top</button>
+            <button mat-menu-item>Prizes</button>
+        </mat-menu>
+        <img src="../assets/2018.png" fxHide.lt-sm="true" />
+        <button mat-button class="title-big">2018 FIFA World Cup Russia</button>
+        <span class="fill-remaining-space"></span>
+        <button mat-button>augustin.calin</button>
+    </mat-toolbar>
+    <div id="mainContent">
+        <mat-sidenav-container>
+            <mat-sidenav class="sideNav" mode="side" [(opened)]="sideNavOpen" fixedInViewport="true" fixedTopGap="100">
+                <h3>What is this?</h3>
+                <p>Some text</p>
+                <h6>see more...</h6>
+                <h3>Top 5</h3>
+                <ol>
+                    <li>User 1 123<mat-icon class="point">grade</mat-icon></li>
+                    <li>User 2 100<mat-icon class="point">grade</mat-icon></li>
+                    <li>User 3 78<mat-icon class="point">grade</mat-icon></li>
+                    <li>User 4 56<mat-icon class="point">grade</mat-icon></li>
+                    <li>User 5 33<mat-icon class="point">grade</mat-icon></li>
+                </ol>
+                <h6>see more...</h6>
+                <h3>The algorithm</h3>
+                <ul>
+                    <li>Guess the result (1 / X / 2): +3</li>
+                    <li>Guess the number of goals: +1</li>
+                </ul>
+                <h6>see more...</h6>
+                <h3>Prizes</h3>
+                <ol>
+                    <li>1st Place prize</li>
+                    <li>2nd Place prize</li>
+                    <li>3rd Place prize</li>
+                    <li>Mention #1</li>
+                    <li>Mention #2</li>
+                </ol>
+            </mat-sidenav>
+            <mat-sidenav-content id="content">
+                <h2>Place your bets</h2>
+                <div fxLayout="column" class="match">
+                    <div>21:00</div>
+                    <div fxLayout="row">
+                        <div fxFlex="60" style="text-align:right"><h1>Team 1</h1></div>
+                        <div fxFlex="1"><h1>-</h1></div>
+                        <div fxFlex="60" style="text-align:left"><h1>Team 2</h1></div>
+                    </div>
+                    <div fxLayout="row">
+                        <div fxFlex="60" style="text-align:right"><h1>0</h1></div>
+                        <div fxFlex="1"><h1>:</h1></div>
+                        <div fxFlex="60" style="text-align:left"><h1>2</h1></div>
+                    </div>
+                </div>
+            </mat-sidenav-content>
+        </mat-sidenav-container>
+    </div>
 
+
+
+</div>

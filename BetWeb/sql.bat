@@ -1,0 +1,2 @@
+docker container rm sql-server
+docker run --name sql-server -d -p 1433:1433 -e sa_password=saCB_esuper1 -e ACCEPT_EULA=Y -v D:/volume/:C:/volume/ -e attach_dbs="[{'dbName':'LGAE','dbFiles':['c:\\volume\\LGAE2.mdf','c:\\volume\\LGAE2_log.ldf']}, {'dbName':'CMBET','dbFiles':['c:\\volume\\CMBET.mdf','c:\\volume\\CMBET_log.ldf']}]" microsoft/mssql-server-windows-developer
