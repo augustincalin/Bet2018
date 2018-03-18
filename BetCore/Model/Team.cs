@@ -1,9 +1,10 @@
-﻿using System;
+﻿using BetCore.Common;
+using System;
 using System.Collections.Generic;
 
 namespace BetCore.Model
 {
-    public partial class Team
+    public class Team: Entity
     {
         public Team()
         {
@@ -11,7 +12,7 @@ namespace BetCore.Model
             MatchTeam2 = new HashSet<Match>();
         }
 
-        public int Id { get; set; }
+        public override int Id { get; set; }
         public string Name { get; set; }
         public bool? IsPlaceholder { get; set; }
 

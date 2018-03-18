@@ -4,61 +4,66 @@
             <mat-icon>menu</mat-icon>
         </button>
         <mat-menu #appMenu="matMenu">
-            <button mat-menu-item>What is this?</button>
-            <button mat-menu-item>Top</button>
-            <button mat-menu-item>Prizes</button>
+            <button mat-menu-item (click)="navigateTo('/help')">What is this?</button>
+            <button mat-menu-item (click)="navigateTo('/top')">Top</button>
+            <button mat-menu-item (click)="navigateTo('/prize')">Prizes</button>
         </mat-menu>
-        <img src="../assets/2018.png" fxHide.lt-sm="true" />
-        <button mat-button class="title-big">2018 FIFA World Cup Russia</button>
+        <img src="../assets/2018.png" fxHide.lt-sm="true" (click)="navigateTo('/home')"/>
+        <button mat-button class="title-big" (click)="navigateTo('/home')">2018 FIFA World Cup Russia</button>
         <span class="fill-remaining-space"></span>
-        <button mat-button>augustin.calin</button>
+        <button mat-button (click)="navigateTo('/user', mainData.username)">{{mainData?.username}}</button>
     </mat-toolbar>
     <div id="mainContent">
         <mat-sidenav-container>
             <mat-sidenav class="sideNav" mode="side" [(opened)]="sideNavOpen" fixedInViewport="true" fixedTopGap="100">
-                <h3>What is this?</h3>
-                <p>Some text</p>
-                <h6>see more...</h6>
                 <h3>Top 5</h3>
-                <ol>
-                    <li>User 1 123<mat-icon class="point">grade</mat-icon></li>
-                    <li>User 2 100<mat-icon class="point">grade</mat-icon></li>
-                    <li>User 3 78<mat-icon class="point">grade</mat-icon></li>
-                    <li>User 4 56<mat-icon class="point">grade</mat-icon></li>
-                    <li>User 5 33<mat-icon class="point">grade</mat-icon></li>
-                </ol>
-                <h6>see more...</h6>
+                <mat-list>
+                    <mat-list-item *ngFor="let user of mainData?.topUsers; let i=index" role="listitem" style="padding:0">
+                        <button mat-button style="width:100%; margin:0; padding:0 10px" (click)="navigateTo('/user', user.displayName)">
+                            <div fxLayout="row">
+                                <div fxFlex="30px" style="text-align:left">{{i+1}}.</div>
+                                <div fxFlex="75" style="text-align:left">{{user.displayName}}</div>
+                                <div fxFlex style="text-align:right">{{user.points}}<mat-icon class="point">grade</mat-icon></div>
+                            </div>
+                        </button>
+                    </mat-list-item>
+                </mat-list>
+                <button mat-button (click)="navigateTo('/top')">see more...</button>
                 <h3>The algorithm</h3>
-                <ul>
-                    <li>Guess the result (1 / X / 2): +3</li>
-                    <li>Guess the number of goals: +1</li>
-                </ul>
-                <h6>see more...</h6>
+                <p>The system is easy: place your bets for forthcoming matches. Guess the result ( 1 / X / 2 ) and you gain {{mainData?.settings.resultPoints}}<mat-icon class="point">grade</mat-icon>. Guess the number of goals a team scores and you gain {{mainData?.settings.goalsPoints}}<mat-icon class="point">grade</mat-icon>.</p>
+                <p>Watch out! In final stages the number of points you can win will double!</p>
+                <button mat-button (click)="navigateTo('/help')">see more...</button>
                 <h3>Prizes</h3>
-                <ol>
-                    <li>1st Place prize</li>
-                    <li>2nd Place prize</li>
-                    <li>3rd Place prize</li>
-                    <li>Mention #1</li>
-                    <li>Mention #2</li>
-                </ol>
+                <p matLine>This are the prizes you can win if you'll be in the first 5 players at the end of the competition:</p>
+                <mat-list>
+                    <mat-list-item>
+                        <img matListAvatar src="../assets/prizes/1.png" alt="...">
+                        <h3 matLine> 1st Place </h3>
+                        <p matLine>
+                            <span>A description of the item.</span>
+                        </p>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <img matListAvatar src="../assets/prizes/2.png" alt="...">
+                        <h3 matLine> 1st Place </h3>
+                        <p matLine>
+                            <span>A description of the item.</span>
+                        </p>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <img matListAvatar src="../assets/prizes/3.png" alt="...">
+                        <h3 matLine> 1st Place </h3>
+                        <p matLine>
+                            <span>A description of the item.</span>
+                        </p>
+                    </mat-list-item>
+                </mat-list>
+                <button mat-button (click)="navigateTo('/prize')">see more...</button>
             </mat-sidenav>
             <mat-sidenav-content id="content">
-                <h2>Place your bets</h2>
-                <div fxLayout="column" class="match">
-                    <div>21:00</div>
-                    <div fxLayout="row">
-                        <div fxFlex="60" style="text-align:right"><h1>Team 1</h1></div>
-                        <div fxFlex="1"><h1>-</h1></div>
-                        <div fxFlex="60" style="text-align:left"><h1>Team 2</h1></div>
-                    </div>
-                    <div fxLayout="row">
-                        <div fxFlex="60" style="text-align:right"><h1>0</h1></div>
-                        <div fxFlex="1"><h1>:</h1></div>
-                        <div fxFlex="60" style="text-align:left"><h1>2</h1></div>
-                    </div>
-                </div>
+                <router-outlet></router-outlet>
             </mat-sidenav-content>
+
         </mat-sidenav-container>
     </div>
 

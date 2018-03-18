@@ -1,16 +1,17 @@
-﻿using System;
+﻿using BetCore.Common;
+using System;
 using System.Collections.Generic;
 
 namespace BetCore.Model
 {
-    public partial class User
+    public class User: Entity
     {
         public User()
         {
             Result = new HashSet<Result>();
         }
 
-        public int Id { get; set; }
+        public override int Id { get; set; }
         public string Name { get; set; }
         public string DisplayName { get; set; }
 

@@ -11,6 +11,7 @@ namespace BetInfrastructure.Data
         public virtual DbSet<Result> Result { get; set; }
         public virtual DbSet<Team> Team { get; set; }
         public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<Setting> Settings { get; set; }
 
         public CMBETContext(DbContextOptions<CMBETContext> options) : base(options)
         {
@@ -33,6 +34,11 @@ namespace BetInfrastructure.Data
                     .HasForeignKey(d => d.Team2Id)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Match_Team1");
+            });
+
+            modelBuilder.Entity<Setting>(entity =>
+            {
+                entity.Property(e => e.FromDate).HasColumnType("datetime");
             });
 
             modelBuilder.Entity<Result>(entity =>

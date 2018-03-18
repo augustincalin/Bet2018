@@ -8,17 +8,51 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var platform_browser_1 = require("@angular/platform-browser");
 var core_1 = require("@angular/core");
+var http_1 = require("@angular/common/http");
+var forms_1 = require("@angular/forms");
+var animations_1 = require("@angular/platform-browser/animations");
+var material_1 = require("@angular/material");
+var icon_1 = require("@angular/material/icon");
+var flex_layout_1 = require("@angular/flex-layout");
+var menu_1 = require("@angular/material/menu");
+var toolbar_1 = require("@angular/material/toolbar");
+var sidenav_1 = require("@angular/material/sidenav");
+var input_1 = require("@angular/material/input");
+var list_1 = require("@angular/material/list");
 var app_component_1 = require("./app.component");
+var prize_component_1 = require("./prize/prize.component");
+var top_component_1 = require("./top/top.component");
+var user_component_1 = require("./user/user.component");
+var home_component_1 = require("./home/home.component");
+var help_component_1 = require("./help/help.component");
+var app_routing_module_1 = require("./app-routing.module");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
             declarations: [
-                app_component_1.AppComponent
+                app_component_1.AppComponent,
+                prize_component_1.PrizeComponent,
+                top_component_1.TopComponent,
+                user_component_1.UserComponent,
+                home_component_1.HomeComponent,
+                help_component_1.HelpComponent
             ],
             imports: [
-                platform_browser_1.BrowserModule
+                platform_browser_1.BrowserModule,
+                http_1.HttpClientModule,
+                forms_1.FormsModule,
+                animations_1.BrowserAnimationsModule,
+                material_1.MatButtonModule,
+                icon_1.MatIconModule,
+                flex_layout_1.FlexLayoutModule,
+                menu_1.MatMenuModule,
+                toolbar_1.MatToolbarModule,
+                sidenav_1.MatSidenavModule,
+                input_1.MatInputModule,
+                list_1.MatListModule,
+                app_routing_module_1.AppRoutingModule
             ],
             providers: [],
             bootstrap: [app_component_1.AppComponent]

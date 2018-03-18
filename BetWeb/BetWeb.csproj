@@ -5,11 +5,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="src\app\main.service.ts" />
+    <None Remove="src\app\model\mainData.model.ts" />
+    <None Remove="src\app\model\settingData.model.ts" />
+    <None Remove="src\app\model\topUserData.model.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="src\app\home\" />
+    <Folder Include="src\app\help\" />
+    <Folder Include="src\app\prize\" />
+    <Folder Include="src\app\top\" />
+    <Folder Include="src\app\user\" />
+    <Folder Include="src\assets\prizes\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,6 +33,13 @@
   <ItemGroup>
     <ProjectReference Include="..\BetCore\BetCore.csproj" />
     <ProjectReference Include="..\BetInfrastructure\BetInfrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="src\app\main.service.ts" />
+    <TypeScriptCompile Include="src\app\model\mainData.model.ts" />
+    <TypeScriptCompile Include="src\app\model\settingData.model.ts" />
+    <TypeScriptCompile Include="src\app\model\topUserData.model.ts" />
   </ItemGroup>
 
 </Project>
