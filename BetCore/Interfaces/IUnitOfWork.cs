@@ -10,6 +10,7 @@ namespace BetCore.Interfaces
     {
         IUserRepository Users { get; }
         ISettingRepository Settings { get; }
+        IMatchRepository Matches { get; }
         Task<int> CompleteAsync();
     }
 }

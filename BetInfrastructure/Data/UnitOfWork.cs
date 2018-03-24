@@ -12,12 +12,14 @@ namespace BetInfrastructure.Data
         private readonly CMBETContext _context;
         public IUserRepository Users { get; private set; }
         public ISettingRepository Settings { get; private set; }
+        public IMatchRepository Matches { get; private set; }
 
         public UnitOfWork(CMBETContext context)
         {
             _context = context;
             Users = new UserRepository(_context);
             Settings = new SettingRepository(_context);
+            Matches = new MatchRepository(_context);
         }
 
         public async Task<int> CompleteAsync()
