@@ -1,53 +1,92 @@
 <h1 style="text-align:center">Place your bets</h1>
 <h2 style="text-align:center">Previous matches</h2>
-<div fxLayout="column" class="match">
-    <div>21:00</div>
+<div fxLayout="column" class="match" *ngFor="let match of homeData?.pastMatches">
     <div fxLayout="row" fxLayoutAlign="center center">
-        <div fxFlex="49" fxLayout="row" fxLayoutAlign="end center">
-            <img src="../assets/1.png" style="padding-right:30px" />
-            <div fxLayout="column" fxLayoutAlign="center center">
-                <h3 style="margin:5px 0 0 0">KOREA REP CHI</h3>
-                <h1 style="margin:30px">3</h1>
-            </div>
+        <div fxFlex="35" style="text-align:right">
+            <img src="../assets/{{match.team1Id}}.png" style="padding-right:30px" />
         </div>
-        <div fxFlex="2"></div>
-        <div fxFlex="49" fxLayout="row" fxLayoutAlign="start center">
-            <div fxLayout="column" fxLayoutAlign="center center">
-                <h3 style="margin:5px 0 0 0">KOREA REPUBLIK</h3>
-                <h1 style="margin:30px">3</h1>
-            </div>
-            <img src="../assets/1.png" style="padding-left:30px" />
+        <div fxFlex="10">
+            <h1 style="margin:5px 0 0 0">{{match.team1}}</h1>
+        </div>
+        <div fxFlex="10" style="text-align:center">
+            <small>{{match.matchTime}}</small>
+        </div>
+        <div fxFlex="10" style="text-align:right">
+            <h1 style="margin:5px 0 0 0">{{match.team2}}</h1>
+        </div>
+        <div fxFlex="35"><img src="../assets/{{match.team2Id}}.png" style="padding-left:30px" /></div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <div fxFlex="35" style="text-align:right"></div>
+        <div fxFlex="10">
+            <h1 style="margin:0">
+                {{match.goals1}}
+            </h1>
+
+        </div>
+        <div fxFlex="10" style="text-align:center">
+            <h1>&mdash;</h1>
+        </div>
+        <div fxFlex="10" style="text-align:right">
+            <h1 style="margin:0">
+                {{match.goals2}}
+            </h1>
+        </div>
+        <div fxFlex="35">
+
         </div>
     </div>
-    <div>Your bet was Korea - Russia 2:0. You won 3<mat-icon class="point">grade</mat-icon>.</div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <div fxFlex="30" style="text-align:right"></div>
+        <div fxFlex="40" style="text-align:center">
+            Your bet was {{match.team1}} &mdash; {{match.team2}} {{match.bet1}}:{{match.bet2}}. You won {{match.points}}<mat-icon class="point">grade</mat-icon>.
+        </div>
+        <div fxFlex="30"></div>
+    </div>
+
 </div>
 <h2 style="text-align:center">Next matches</h2>
-<div fxLayout="column" class="match">
-    <div>21:00</div>
+<div fxLayout="column" class="match" *ngFor="let match of homeData?.nextMatches">
     <div fxLayout="row" fxLayoutAlign="center center">
-        <div fxFlex="49" fxLayout="row" fxLayoutAlign="end center">
-            <img src="../assets/1.png" style="padding-right:30px" />
-            <div fxLayout="column" fxLayoutAlign="center center">
-                <h3 style="margin:5px 0 0 0">KOREA REP CHI</h3>
-                <h1 style="margin:0">
-                    <mat-form-field style="width:50px; text-align:center; padding-bottom:0">
-                        <input matInput type="number">
-                    </mat-form-field>
-                </h1>
-            </div>
+        <div fxFlex="35" style="text-align:right">
+            <img src="../assets/{{match.team1Id}}.png" style="padding-right:30px" />
         </div>
-        <div fxFlex="2"></div>
-        <div fxFlex="49" fxLayout="row" fxLayoutAlign="start center">
-            <div fxLayout="column" fxLayoutAlign="center center">
-                <h3 style="margin:5px 0 0 0">KOREA REPUBLIK</h3>
-                <h1 style="margin:0">
-                    <mat-form-field style="width:50px; text-align:center; padding-bottom:0">
-                        <input matInput type="number">
-                    </mat-form-field>
-                </h1>
-            </div>
-            <img src="../assets/1.png" style="padding-left:30px" />
+        <div fxFlex="10">
+            <h1 style="margin:5px 0 0 0">{{match.team1}}</h1>
+        </div>
+        <div fxFlex="10" style="text-align:center">
+            <small>{{match.matchTime}}</small>
+        </div>
+        <div fxFlex="10" style="text-align:right">
+            <h1 style="margin:5px 0 0 0">{{match.team2}}</h1>
+        </div>
+        <div fxFlex="35"><img src="../assets/{{match.team2Id}}.png" style="padding-left:30px" /></div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <div fxFlex="35" style="text-align:right">
+
+        </div>
+        <div fxFlex="10">
+            <h1 style="margin:0">
+                <mat-form-field>
+                    <input matInput type="number" [(ngModel)]="match.bet1" placeholder="Your bet">
+                </mat-form-field>
+            </h1>
+
+        </div>
+        <div fxFlex="10" style="text-align:center">
+            <h1>:</h1>
+        </div>
+        <div fxFlex="10" style="text-align:right">
+            <h1 style="margin:0">
+                <mat-form-field>
+                    <input style="text-align:right" matInput type="number" [(ngModel)]="match.bet2" placeholder="Your bet">
+                </mat-form-field>
+            </h1>
+        </div>
+        <div fxFlex="35">
+
         </div>
     </div>
-    <div>Place your bets above.</div>
+
 </div>

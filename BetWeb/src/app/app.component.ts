@@ -4,7 +4,7 @@ import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 import { Router } from '@angular/router';
 import { MainService } from './main.service';
 import { OnInit } from '@angular/core';
-import { MainData } from './model/mainData.model';
+import { MainData } from './model/main/mainData.model';
 
 
 @Component({
@@ -17,6 +17,7 @@ export class AppComponent implements OnDestroy, OnInit {
     watcher: Subscription;
     activeMediaQuery = '';
     mainData: MainData;
+
     constructor(private media: ObservableMedia, private router: Router, private mainService: MainService) {
         this.watcher = media.subscribe((change: MediaChange) => {
             this.sideNavOpen = !this.media.isActive('xs');

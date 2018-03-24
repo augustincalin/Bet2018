@@ -193,6 +193,7 @@ var home_component_1 = __webpack_require__("./src/app/home/home.component.ts");
 var help_component_1 = __webpack_require__("./src/app/help/help.component.ts");
 var app_routing_module_1 = __webpack_require__("./src/app/app-routing.module.ts");
 var main_service_1 = __webpack_require__("./src/app/main.service.ts");
+var home_service_1 = __webpack_require__("./src/app/home/home.service.ts");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -221,7 +222,7 @@ var AppModule = /** @class */ (function () {
                 list_1.MatListModule,
                 app_routing_module_1.AppRoutingModule
             ],
-            providers: [main_service_1.MainService],
+            providers: [main_service_1.MainService, home_service_1.HomeService],
             bootstrap: [app_component_1.AppComponent]
         })
     ], AppModule);
@@ -285,7 +286,7 @@ exports.HelpComponent = HelpComponent;
 /***/ "./src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h1 style=\"text-align:center\">Place your bets</h1>\r\n<h2 style=\"text-align:center\">Previous matches</h2>\r\n<div fxLayout=\"column\" class=\"match\">\r\n    <div>21:00</div>\r\n    <div fxLayout=\"row\" fxLayoutAlign=\"center center\">\r\n        <div fxFlex=\"49\" fxLayout=\"row\" fxLayoutAlign=\"end center\">\r\n            <img src=\"../assets/1.png\" style=\"padding-right:30px\" />\r\n            <div fxLayout=\"column\" fxLayoutAlign=\"center center\">\r\n                <h3 style=\"margin:5px 0 0 0\">KOREA REP CHI</h3>\r\n                <h1 style=\"margin:30px\">3</h1>\r\n            </div>\r\n        </div>\r\n        <div fxFlex=\"2\"></div>\r\n        <div fxFlex=\"49\" fxLayout=\"row\" fxLayoutAlign=\"start center\">\r\n            <div fxLayout=\"column\" fxLayoutAlign=\"center center\">\r\n                <h3 style=\"margin:5px 0 0 0\">KOREA REPUBLIK</h3>\r\n                <h1 style=\"margin:30px\">3</h1>\r\n            </div>\r\n            <img src=\"../assets/1.png\" style=\"padding-left:30px\" />\r\n        </div>\r\n    </div>\r\n    <div>Your bet was Korea - Russia 2:0. You won 3<mat-icon class=\"point\">grade</mat-icon>.</div>\r\n</div>\r\n<h2 style=\"text-align:center\">Next matches</h2>\r\n<div fxLayout=\"column\" class=\"match\">\r\n    <div>21:00</div>\r\n    <div fxLayout=\"row\" fxLayoutAlign=\"center center\">\r\n        <div fxFlex=\"49\" fxLayout=\"row\" fxLayoutAlign=\"end center\">\r\n            <img src=\"../assets/1.png\" style=\"padding-right:30px\" />\r\n            <div fxLayout=\"column\" fxLayoutAlign=\"center center\">\r\n                <h3 style=\"margin:5px 0 0 0\">KOREA REP CHI</h3>\r\n                <h1 style=\"margin:0\">\r\n                    <mat-form-field style=\"width:50px; text-align:center; padding-bottom:0\">\r\n                        <input matInput type=\"number\">\r\n                    </mat-form-field>\r\n                </h1>\r\n            </div>\r\n        </div>\r\n        <div fxFlex=\"2\"></div>\r\n        <div fxFlex=\"49\" fxLayout=\"row\" fxLayoutAlign=\"start center\">\r\n            <div fxLayout=\"column\" fxLayoutAlign=\"center center\">\r\n                <h3 style=\"margin:5px 0 0 0\">KOREA REPUBLIK</h3>\r\n                <h1 style=\"margin:0\">\r\n                    <mat-form-field style=\"width:50px; text-align:center; padding-bottom:0\">\r\n                        <input matInput type=\"number\">\r\n                    </mat-form-field>\r\n                </h1>\r\n            </div>\r\n            <img src=\"../assets/1.png\" style=\"padding-left:30px\" />\r\n        </div>\r\n    </div>\r\n    <div>Place your bets above.</div>\r\n</div>\r\n"
+module.exports = "<h1 style=\"text-align:center\">Place your bets</h1>\r\n<h2 style=\"text-align:center\">Previous matches</h2>\r\n<div fxLayout=\"column\" class=\"match\" *ngFor=\"let match of homeData?.pastMatches\">\r\n    <div fxLayout=\"row\" fxLayoutAlign=\"center center\">\r\n        <div fxFlex=\"35\" style=\"text-align:right\">\r\n            <img src=\"../assets/{{match.team1Id}}.png\" style=\"padding-right:30px\" />\r\n        </div>\r\n        <div fxFlex=\"10\">\r\n            <h1 style=\"margin:5px 0 0 0\">{{match.team1}}</h1>\r\n        </div>\r\n        <div fxFlex=\"10\" style=\"text-align:center\">\r\n            <small>{{match.matchTime}}</small>\r\n        </div>\r\n        <div fxFlex=\"10\" style=\"text-align:right\">\r\n            <h1 style=\"margin:5px 0 0 0\">{{match.team2}}</h1>\r\n        </div>\r\n        <div fxFlex=\"35\"><img src=\"../assets/{{match.team2Id}}.png\" style=\"padding-left:30px\" /></div>\r\n    </div>\r\n    <div fxLayout=\"row\" fxLayoutAlign=\"center center\">\r\n        <div fxFlex=\"35\" style=\"text-align:right\"></div>\r\n        <div fxFlex=\"10\">\r\n            <h1 style=\"margin:0\">\r\n                {{match.goals1}}\r\n            </h1>\r\n\r\n        </div>\r\n        <div fxFlex=\"10\" style=\"text-align:center\">\r\n            <h1>&mdash;</h1>\r\n        </div>\r\n        <div fxFlex=\"10\" style=\"text-align:right\">\r\n            <h1 style=\"margin:0\">\r\n                {{match.goals2}}\r\n            </h1>\r\n        </div>\r\n        <div fxFlex=\"35\">\r\n\r\n        </div>\r\n    </div>\r\n    <div fxLayout=\"row\" fxLayoutAlign=\"center center\">\r\n        <div fxFlex=\"30\" style=\"text-align:right\"></div>\r\n        <div fxFlex=\"40\" style=\"text-align:center\">\r\n            Your bet was {{match.team1}} &mdash; {{match.team2}} {{match.bet1}}:{{match.bet2}}. You won {{match.points}}<mat-icon class=\"point\">grade</mat-icon>.\r\n        </div>\r\n        <div fxFlex=\"30\"></div>\r\n    </div>\r\n\r\n</div>\r\n<h2 style=\"text-align:center\">Next matches</h2>\r\n<div fxLayout=\"column\" class=\"match\" *ngFor=\"let match of homeData?.nextMatches\">\r\n    <div fxLayout=\"row\" fxLayoutAlign=\"center center\">\r\n        <div fxFlex=\"35\" style=\"text-align:right\">\r\n            <img src=\"../assets/{{match.team1Id}}.png\" style=\"padding-right:30px\" />\r\n        </div>\r\n        <div fxFlex=\"10\">\r\n            <h1 style=\"margin:5px 0 0 0\">{{match.team1}}</h1>\r\n        </div>\r\n        <div fxFlex=\"10\" style=\"text-align:center\">\r\n            <small>{{match.matchTime}}</small>\r\n        </div>\r\n        <div fxFlex=\"10\" style=\"text-align:right\">\r\n            <h1 style=\"margin:5px 0 0 0\">{{match.team2}}</h1>\r\n        </div>\r\n        <div fxFlex=\"35\"><img src=\"../assets/{{match.team2Id}}.png\" style=\"padding-left:30px\" /></div>\r\n    </div>\r\n    <div fxLayout=\"row\" fxLayoutAlign=\"center center\">\r\n        <div fxFlex=\"35\" style=\"text-align:right\">\r\n\r\n        </div>\r\n        <div fxFlex=\"10\">\r\n            <h1 style=\"margin:0\">\r\n                <mat-form-field>\r\n                    <input matInput type=\"number\" [(ngModel)]=\"match.bet1\" placeholder=\"Your bet\">\r\n                </mat-form-field>\r\n            </h1>\r\n\r\n        </div>\r\n        <div fxFlex=\"10\" style=\"text-align:center\">\r\n            <h1>:</h1>\r\n        </div>\r\n        <div fxFlex=\"10\" style=\"text-align:right\">\r\n            <h1 style=\"margin:0\">\r\n                <mat-form-field>\r\n                    <input style=\"text-align:right\" matInput type=\"number\" [(ngModel)]=\"match.bet2\" placeholder=\"Your bet\">\r\n                </mat-form-field>\r\n            </h1>\r\n        </div>\r\n        <div fxFlex=\"35\">\r\n\r\n        </div>\r\n    </div>\r\n\r\n</div>\r\n"
 
 /***/ }),
 
@@ -301,6 +302,14 @@ module.exports = ""
 
 "use strict";
 
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -312,10 +321,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var home_service_1 = __webpack_require__("./src/app/home/home.service.ts");
 var HomeComponent = /** @class */ (function () {
-    function HomeComponent() {
+    function HomeComponent(homeService) {
+        this.homeService = homeService;
     }
     HomeComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.homeService.getHomeData().subscribe(function (data) { return _this.homeData = __assign({}, data); });
     };
     HomeComponent = __decorate([
         core_1.Component({
@@ -323,11 +336,46 @@ var HomeComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/home/home.component.html"),
             styles: [__webpack_require__("./src/app/home/home.component.scss")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [home_service_1.HomeService])
     ], HomeComponent);
     return HomeComponent;
 }());
 exports.HomeComponent = HomeComponent;
+
+
+/***/ }),
+
+/***/ "./src/app/home/home.service.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var http_1 = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+var HomeService = /** @class */ (function () {
+    function HomeService(http) {
+        this.http = http;
+    }
+    HomeService.prototype.getHomeData = function () {
+        return this.http.get('/api/home/gethomedata');
+    };
+    HomeService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [http_1.HttpClient])
+    ], HomeService);
+    return HomeService;
+}());
+exports.HomeService = HomeService;
 
 
 /***/ }),

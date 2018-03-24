@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HomeService } from './home.service';
+import { HomeData } from '../model/home/homeData.model';
 
 @Component({
   selector: 'bet-home',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+    homeData: HomeData;
 
-  constructor() { }
+    constructor(private homeService: HomeService) { }
 
-  ngOnInit() {
+    ngOnInit() {
+        this.homeService.getHomeData().subscribe(data => this.homeData = { ...data });
   }
 
 }

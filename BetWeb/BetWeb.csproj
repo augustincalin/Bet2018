@@ -5,14 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="src\app\home\home.service.ts" />
     <None Remove="src\app\main.service.ts" />
+    <None Remove="src\app\model\home\homeData.model.ts" />
+    <None Remove="src\app\model\home\matchData.model.ts" />
     <None Remove="src\app\model\mainData.model.ts" />
     <None Remove="src\app\model\settingData.model.ts" />
     <None Remove="src\app\model\topUserData.model.ts" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="src\app\home\" />
     <Folder Include="src\app\help\" />
     <Folder Include="src\app\prize\" />
     <Folder Include="src\app\top\" />
@@ -36,10 +38,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="src\app\home\home.service.ts" />
     <TypeScriptCompile Include="src\app\main.service.ts" />
-    <TypeScriptCompile Include="src\app\model\mainData.model.ts" />
-    <TypeScriptCompile Include="src\app\model\settingData.model.ts" />
-    <TypeScriptCompile Include="src\app\model\topUserData.model.ts" />
+    <TypeScriptCompile Include="src\app\model\home\homeData.model.ts" />
+    <TypeScriptCompile Include="src\app\model\home\matchData.model.ts" />
+    <TypeScriptCompile Include="src\app\model\main\mainData.model.ts" />
+    <TypeScriptCompile Include="src\app\model\main\settingData.model.ts" />
+    <TypeScriptCompile Include="src\app\model\main\topUserData.model.ts" />
   </ItemGroup>
 
 </Project>

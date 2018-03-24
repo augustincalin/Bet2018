@@ -1,4 +1,12 @@
 "use strict";
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,10 +18,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var home_service_1 = require("./home.service");
 var HomeComponent = /** @class */ (function () {
-    function HomeComponent() {
+    function HomeComponent(homeService) {
+        this.homeService = homeService;
     }
     HomeComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.homeService.getHomeData().subscribe(function (data) { return _this.homeData = __assign({}, data); });
     };
     HomeComponent = __decorate([
         core_1.Component({
@@ -21,7 +33,7 @@ var HomeComponent = /** @class */ (function () {
             templateUrl: './home.component.html',
             styleUrls: ['./home.component.scss']
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [home_service_1.HomeService])
     ], HomeComponent);
     return HomeComponent;
 }());

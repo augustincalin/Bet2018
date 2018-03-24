@@ -31,13 +31,21 @@ namespace BetWeb
         {
             services.AddDbContext<CMBETContext>(options => options.UseSqlServer(Configuration.GetConnectionString("CMBET")));
             services.AddMvc();
+
             services.AddTransient<DbContext, CMBETContext>();
+
+            services.AddTransient<IRepository<Setting>, EFRepository<Setting>>();
             services.AddTransient<IRepository<User>, EFRepository<User>>();
+            services.AddTransient<IRepository<Match>, EFRepository<Match>>();
+
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<ISettingRepository, SettingRepository>();
-            services.AddTransient<IRepository<Setting>, EFRepository<Setting>>();
+            services.AddTransient<IMatchRepository, MatchRepository>();
 
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<ISettingService, SettingService>();
+            services.AddTransient<IMatchService, MatchService>();
+
             services.AddTransient<IUnitOfWork, UnitOfWork>();
         }
 

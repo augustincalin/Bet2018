@@ -23,6 +23,7 @@ import { HelpComponent } from './help/help.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { MainService } from './main.service';
+import { HomeService } from './home/home.service';
 
 
 @NgModule({
@@ -49,7 +50,7 @@ import { MainService } from './main.service';
         MatListModule,
         AppRoutingModule
     ],
-    providers: [MainService],
+    providers: [MainService, HomeService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

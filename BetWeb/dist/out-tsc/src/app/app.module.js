@@ -26,6 +26,8 @@ var user_component_1 = require("./user/user.component");
 var home_component_1 = require("./home/home.component");
 var help_component_1 = require("./help/help.component");
 var app_routing_module_1 = require("./app-routing.module");
+var main_service_1 = require("./main.service");
+var home_service_1 = require("./home/home.service");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -54,7 +56,7 @@ var AppModule = /** @class */ (function () {
                 list_1.MatListModule,
                 app_routing_module_1.AppRoutingModule
             ],
-            providers: [],
+            providers: [main_service_1.MainService, home_service_1.HomeService],
             bootstrap: [app_component_1.AppComponent]
         })
     ], AppModule);
